@@ -10,7 +10,7 @@ source:
     md5: f6b70e1a30fc8db597c360e375d186de
 
 build:
-    number: 0
+    number: 1
     skip: True  # [win and py35]
     preserve_egg_dir: True
     entry_points:
@@ -23,6 +23,7 @@ requirements:
         - setuptools
         - numpy x.x
         - gdal ==1.11.4
+        - giflib  # [not win]
     run:
         - python
         - setuptools
@@ -32,6 +33,7 @@ requirements:
         - munch
         - click-plugins
         - six
+        - giflib  # [not win]
 
 test:
     imports:
@@ -39,6 +41,7 @@ test:
         - fiona.fio
     commands:
         - fio --help
+        - conda inspect linkages fiona --name _test  # [linux]
     requires:
         - nose
     files:
