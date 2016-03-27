@@ -23,7 +23,6 @@ requirements:
         - setuptools
         - numpy x.x
         - gdal ==1.11.4
-        - giflib  # [not win]
     run:
         - python
         - setuptools
@@ -33,7 +32,6 @@ requirements:
         - munch
         - click-plugins
         - six
-        - giflib  # [not win]
 
 test:
     imports:
