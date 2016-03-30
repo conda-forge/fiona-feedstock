@@ -5,12 +5,12 @@ package:
     version: {{ version }}
 
 source:
-    fn: Fiona-{{ version }}.tar.gz
-    url: https://pypi.python.org/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-    md5: f6b70e1a30fc8db597c360e375d186de
+    fn: Fiona-{{ version }}.post1.tar.gz
+    url: https://pypi.python.org/packages/source/F/Fiona/Fiona-{{ version }}.post1.tar.gz
+    md5: f68a470455f92cb45d56e4a549a2161c
 
 build:
-    number: 1
+    number: 0
     skip: True  # [win and py35]
     preserve_egg_dir: True
     entry_points:
@@ -22,13 +22,13 @@ requirements:
         - cython
         - setuptools
         - numpy x.x
-        - gdal ==1.11.4
+        - gdal 1.11.4
         - giflib  # [not win]
     run:
         - python
         - setuptools
         - numpy x.x
-        - gdal ==1.11.4
+        - gdal 1.11.4
         - cligj
         - munch
         - click-plugins
