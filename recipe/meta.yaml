@@ -10,7 +10,7 @@ source:
     md5: f68a470455f92cb45d56e4a549a2161c
 
 build:
-    number: 0
+    number: 1
     skip: True  # [win and py35]
     preserve_egg_dir: True
     entry_points:
@@ -23,7 +23,6 @@ requirements:
         - setuptools
         - numpy x.x
         - gdal 1.11.4
-        - giflib  # [not win]
     run:
         - python
         - setuptools
@@ -33,7 +32,6 @@ requirements:
         - munch
         - click-plugins
         - six
-        - giflib  # [not win]
 
 test:
     imports:
