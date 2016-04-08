@@ -10,8 +10,7 @@ source:
     md5: f68a470455f92cb45d56e4a549a2161c
 
 build:
-    number: 2
-    skip: True  # [win and py35]
+    number: 3
     preserve_egg_dir: True
     entry_points:
         - fio=fiona.fio.main:main_group
