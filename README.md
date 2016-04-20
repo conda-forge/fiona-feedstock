@@ -5,7 +5,7 @@ Home: http://github.com/Toblerity/Fiona
 
 Package license: BSD License
 
-Feedstock license: BSD
+Feedstock license: BSD 3-Clause
 
 Summary: Fiona reads and writes spatial data files
 
