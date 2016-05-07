@@ -1,16 +1,16 @@
-{% set version = "1.6.3" %}
+{% set version = "1.6.4" %}
 
 package:
     name: fiona
     version: {{ version }}
 
 source:
-    fn: Fiona-{{ version }}.post1.tar.gz
-    url: https://pypi.python.org/packages/source/F/Fiona/Fiona-{{ version }}.post1.tar.gz
-    md5: f68a470455f92cb45d56e4a549a2161c
+    fn: fiona-{{ version }}.post1.tar.gz
+    url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
+    sha256: a84fb516e69c218a5346b3850f3f5df5bd0c8fb861dc76cc05bb4ef909be7120
 
 build:
-    number: 5
+    number: 0
     preserve_egg_dir: True
     entry_points:
         - fio=fiona.fio.main:main_group
