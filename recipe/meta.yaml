@@ -10,7 +10,7 @@ source:
     sha256: a84fb516e69c218a5346b3850f3f5df5bd0c8fb861dc76cc05bb4ef909be7120
 
 build:
-    number: 0
+    number: 1
     preserve_egg_dir: True
     entry_points:
         - fio=fiona.fio.main:main_group
@@ -49,7 +49,7 @@ test:
 
 about:
     home: http://github.com/Toblerity/Fiona
-    license: BSD License
+    license: BSD 3-Clause
     summary: Fiona reads and writes spatial data files
 
 extra:
