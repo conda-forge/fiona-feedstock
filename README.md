@@ -3,7 +3,7 @@ About fiona
 
 Home: http://github.com/Toblerity/Fiona
 
-Package license: BSD License
+Package license: BSD 3-Clause
 
 Feedstock license: BSD 3-Clause
 
@@ -69,6 +69,7 @@ Terminology
 
 Current build status
 ====================
+
 Linux: [![Circle CI](https://circleci.com/gh/conda-forge/fiona-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/fiona-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/fiona-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/fiona-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/fiona-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/fiona-feedstock/branch/master)
