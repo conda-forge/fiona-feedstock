@@ -1,0 +1,11 @@
+--- setup.py	2016-06-15 13:28:44.000000000 -0300
++++ setup.py	2016-06-15 20:03:19.706422409 -0300
+@@ -79,6 +79,8 @@
+     index = sys.argv.index('--gdalversion')
+     sys.argv.pop(index)
+     gdalversion = sys.argv.pop(index)
++else:
++   gdalversion = '2.1.0'
+ 
+ # Extend distutil's sdist command to generate C extension sources from
+ # both `ogrext`.pyx` and `ogrext2.pyx` for GDAL 1.x and 2.x.

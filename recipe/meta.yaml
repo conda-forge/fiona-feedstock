@@ -8,6 +8,8 @@ source:
     fn: fiona-{{ version }}.post1.tar.gz
     url: https://github.com/Toblerity/Fiona/archive/{{ version }}.post2.tar.gz
     sha256: 5eb68355b72f69f93a6c9948c0a6dc92b14408aa0d7c0ec48f097fcf17f70ee4
+    patches:
+        - gdal_version_win.patch  # [win]
 
 build:
     number: 0
@@ -21,12 +23,12 @@ requirements:
         - cython
         - setuptools
         - numpy x.x
-        - gdal >=2
+        - gdal >=2.*
     run:
         - python
         - setuptools
         - numpy x.x
-        - gdal >=2
+        - gdal >=2.*
         - cligj
         - munch
         - click-plugins
