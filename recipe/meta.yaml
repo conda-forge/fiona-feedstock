@@ -38,7 +38,6 @@ test:
         - fiona.fio
     commands:
         - fio --help
-        - conda inspect linkages fiona --name _test  # [linux]
     requires:
         - nose
     files:
