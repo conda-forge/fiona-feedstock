@@ -1,4 +1,4 @@
-{% set version = "1.6.4" %}
+{% set version = "1.7.0" %}
 
 package:
     name: fiona
@@ -6,11 +6,13 @@ package:
 
 source:
     fn: fiona-{{ version }}.post1.tar.gz
-    url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
-    sha256: a84fb516e69c218a5346b3850f3f5df5bd0c8fb861dc76cc05bb4ef909be7120
+    url: https://github.com/Toblerity/Fiona/archive/{{ version }}.post2.tar.gz
+    sha256: 5eb68355b72f69f93a6c9948c0a6dc92b14408aa0d7c0ec48f097fcf17f70ee4
+    patches:
+        - gdal_version_win.patch  # [win]
 
 build:
-    number: 1
+    number: 0
     preserve_egg_dir: True
     entry_points:
         - fio=fiona.fio.main:main_group
@@ -21,12 +23,12 @@ requirements:
         - cython
         - setuptools
         - numpy x.x
-        - gdal 1.11.4
+        - gdal >=2.*
     run:
         - python
         - setuptools
         - numpy x.x
-        - gdal 1.11.4
+        - gdal >=2.*
         - cligj
         - munch
         - click-plugins
@@ -38,7 +40,6 @@ test:
         - fiona.fio
     commands:
         - fio --help
-        - conda inspect linkages fiona --name _test  # [linux]
     requires:
         - nose
     files:
