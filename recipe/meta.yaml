@@ -12,7 +12,7 @@ source:
         - gdal_version.patch
 
 build:
-    number: 0
+    number: 1
     preserve_egg_dir: True
     entry_points:
         - fio=fiona.fio.main:main_group
@@ -23,12 +23,12 @@ requirements:
         - cython
         - setuptools
         - numpy x.x
-        - gdal >=2.*
+        - gdal 2.1.*
     run:
         - python
         - setuptools
         - numpy x.x
-        - gdal >=2.*
+        - gdal 2.1.*
         - cligj
         - munch
         - click-plugins
