@@ -38,8 +38,6 @@ test:
     imports:
         - fiona
         - fiona.fio
-    commands:
-        - fio --help
     requires:
         - nose
     files:
@@ -47,6 +45,9 @@ test:
         - test.dbf
         - test.shp
         - test.shx
+    commands:
+        - fio --help
+        - conda inspect linkages -n _test fiona  # [linux]
 
 about:
     home: http://github.com/Toblerity/Fiona
