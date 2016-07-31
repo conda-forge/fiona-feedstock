@@ -12,7 +12,7 @@ source:
         - gdal_version.patch
 
 build:
-    number: 1
+    number: 2
     preserve_egg_dir: True
     entry_points:
         - fio=fiona.fio.main:main_group
@@ -40,19 +40,21 @@ test:
         - fiona.fio
     requires:
         - nose
+        - pytest
     files:
-        - test.cpg
-        - test.dbf
-        - test.shp
-        - test.shx
+        - test_data/test.cpg
+        - test_data/test.dbf
+        - test_data/test.shp
+        - test_data/test.shx
     commands:
+        - cp -r $SRC_DIR/tests /tmp && cd /tmp && nosetests --exclude test_filter_vsi --exclude test_geopackage --exclude test_write_mismatch tests  # [linux]
         - fio --help
-        - conda inspect linkages -n _test fiona  # [linux]
+        - conda inspect linkages -n _test fiona  # [not win]
 
 about:
     home: http://github.com/Toblerity/Fiona
     license: BSD 3-Clause
-    summary: Fiona reads and writes spatial data files
+    summary: 'Fiona reads and writes spatial data files.'
 
 extra:
     recipe-maintainers:
