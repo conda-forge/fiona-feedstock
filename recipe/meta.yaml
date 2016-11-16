@@ -12,7 +12,7 @@ source:
     - gdal_version.patch
 
 build:
-  number: 3
+  number: 4
   preserve_egg_dir: True
   entry_points:
     - fio=fiona.fio.main:main_group
