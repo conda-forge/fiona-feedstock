@@ -1,18 +1,16 @@
-{% set version = "1.7.0" %}
+{% set version = "1.7.1" %}
 
 package:
   name: fiona
   version: {{ version }}
 
 source:
-  fn: fiona-{{ version }}.post2.tar.gz
-  url: https://github.com/Toblerity/Fiona/archive/{{ version }}.post2.tar.gz
-  sha256: 5eb68355b72f69f93a6c9948c0a6dc92b14408aa0d7c0ec48f097fcf17f70ee4
-  patches:
-    - gdal_version.patch
+  fn: fiona-{{ version }}.tar.gz
+  url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
+  sha256: 8e0778cca2af9e0c6a1499885fdd86f97233488e25830a492d6b73261bfff2f5
 
 build:
-  number: 4
+  number: 0
   preserve_egg_dir: True
   entry_points:
     - fio=fiona.fio.main:main_group
