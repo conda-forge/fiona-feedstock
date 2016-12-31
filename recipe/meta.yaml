@@ -6,11 +6,11 @@ package:
 
 source:
   fn: fiona-{{ version }}.tar.gz
-  url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
-  sha256: 8e0778cca2af9e0c6a1499885fdd86f97233488e25830a492d6b73261bfff2f5
+  url: https://github.com/Toblerity/Fiona/archive/{{ version }}.post1.tar.gz
+  sha256: bbd827bca8c60ca9d18303f9b32fc7c3a9d918c052b19af788b9d88284549c5d
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: True
   entry_points:
     - fio=fiona.fio.main:main_group
@@ -47,12 +47,13 @@ test:
   commands:
     - cp -r $SRC_DIR/tests /tmp && cd /tmp && nosetests --exclude test_filter_vsi --exclude test_geopackage --exclude test_write_mismatch tests  # [linux]
     - fio --help
-    #- conda inspect linkages -p $PREFIX fiona  # [not win]
-    #- conda inspect objects -p $PREFIX fiona  # [osx]
+    - conda inspect linkages -p $PREFIX fiona  # [not win]
+    - conda inspect objects -p $PREFIX fiona  # [osx]
 
 about:
   home: http://github.com/Toblerity/Fiona
   license: BSD 3-Clause
+  license_file: LICENSE.txt
   summary: 'Fiona reads and writes spatial data files.'
 
 extra:

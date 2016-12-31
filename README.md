@@ -11,6 +11,18 @@ Summary: Fiona reads and writes spatial data files.
 
 
 
+Current build status
+====================
+
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/fiona-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/fiona-feedstock)
+OSX: [![TravisCI](https://travis-ci.org/conda-forge/fiona-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/fiona-feedstock)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/fiona-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/fiona-feedstock/branch/master)
+
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/fiona/badges/version.svg)](https://anaconda.org/conda-forge/fiona)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/fiona/badges/downloads.svg)](https://anaconda.org/conda-forge/fiona)
+
 Installing fiona
 ================
 
@@ -66,18 +78,6 @@ Terminology
 
 **conda-forge** - the place where the feedstock and smithy live and work to
                   produce the finished article (built conda distributions)
-
-Current build status
-====================
-
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/fiona-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/fiona-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/fiona-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/fiona-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/fiona-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/fiona-feedstock/branch/master)
-
-Current release info
-====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/fiona/badges/version.svg)](https://anaconda.org/conda-forge/fiona)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/fiona/badges/downloads.svg)](https://anaconda.org/conda-forge/fiona)
 
 
 Updating fiona-feedstock
