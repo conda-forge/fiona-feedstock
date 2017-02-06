@@ -10,7 +10,7 @@ source:
   sha256: e1b353294afad04f11f28ecda3735ecbf33537106d9d5603e3f50bba4953d7c4
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: True
   entry_points:
     - fio=fiona.fio.main:main_group
@@ -42,14 +42,8 @@ test:
     - nose
     - pytest
   files:
-    - test_data/test.cpg
-    - test_data/test.dbf
-    - test_data/test.shp
-    - test_data/test.shx
+    - test_data
   commands:
-    # FIXME: missing coutwildrnp.zip from the tarball.
-    # We can add it here later.
-    #- cd tests && nosetests --exclude test_filter_vsi --exclude test_geopackage --exclude test_write_mismatch tests  # [linux]
     - fio --help
     - conda inspect linkages -p $PREFIX fiona  # [not win]
     - conda inspect objects -p $PREFIX fiona  # [osx]
