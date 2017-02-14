@@ -7,7 +7,7 @@ package:
 source:
   fn: fiona-{{ version }}.tar.gz
   url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
-  sha256: f43198f7e6685027fd9d25bf55a0ceb0897639beb07a92f31964de24cf930598
+  sha256: 3b5357ed57f2799159bb1246b47f61948ba0bb8f3808e88cdad1bcdd1772d13c
 
 build:
   number: 0
