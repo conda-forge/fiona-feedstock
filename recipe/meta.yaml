@@ -1,4 +1,4 @@
-{% set version = "1.7.3" %}
+{% set version = "1.7.4" %}
 
 package:
   name: fiona
@@ -7,7 +7,7 @@ package:
 source:
   fn: fiona-{{ version }}.tar.gz
   url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
-  sha256: 3b5357ed57f2799159bb1246b47f61948ba0bb8f3808e88cdad1bcdd1772d13c
+  sha256: d67712b2f44dd7ec71669b45de94be18eef502147382a2b48c2a0abdde28959f
 
 build:
   number: 0
