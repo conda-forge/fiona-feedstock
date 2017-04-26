@@ -1,4 +1,4 @@
-{% set version = "1.7.5" %}
+{% set version = "1.7.6" %}
 
 package:
   name: fiona
@@ -7,7 +7,7 @@ package:
 source:
   fn: fiona-{{ version }}.tar.gz
   url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
-  sha256: 98cfd0b04af92d08ae9558d61d4e21e681cfba56d8b7f0d428567c91942c0ca0
+  sha256: 00f4cd94bc3e095e5c576dd42184722d5f99e061fce9b992f77f2fbd8afeb76e
 
 build:
   number: 0
@@ -31,6 +31,8 @@ requirements:
     - munch
     - click-plugins
     - six
+    - enum34  # [py27]
+    - shapely
 
 test:
   source_files:
@@ -45,6 +47,8 @@ test:
     - test_data
   commands:
     - fio --help
+    - fio ls test_data/test.shp
+    - fio info test_data/test.shp
     - conda inspect linkages -p $PREFIX fiona  # [not win]
     - conda inspect objects -p $PREFIX fiona  # [osx]
 
