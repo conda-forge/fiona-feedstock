@@ -1,4 +1,4 @@
-{% set version = "1.7.6" %}
+{% set version = "1.7.7" %}
 
 package:
   name: fiona
@@ -6,8 +6,8 @@ package:
 
 source:
   fn: fiona-{{ version }}.tar.gz
-  url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
-  sha256: 00f4cd94bc3e095e5c576dd42184722d5f99e061fce9b992f77f2fbd8afeb76e
+  url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
+  sha256: c9d12e2b796fb3dee0d0bb3a286e960649712526b2d41081a9c2eaed21e69e72
 
 build:
   number: 0
@@ -21,12 +21,12 @@ requirements:
     - cython
     - setuptools
     - numpy x.x
-    - gdal 2.1.*
+    - gdal 2.2.*
   run:
     - python
     - setuptools
     - numpy x.x
-    - gdal 2.1.*
+    - gdal 2.2.*
     - cligj
     - munch
     - click-plugins
