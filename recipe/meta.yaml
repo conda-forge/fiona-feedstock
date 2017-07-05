@@ -21,12 +21,12 @@ requirements:
     - cython
     - setuptools
     - numpy x.x
-    - gdal 2.2.*
+    - libgdal 2.2.*
   run:
     - python
     - setuptools
     - numpy x.x
-    - gdal 2.2.*
+    - libgdal 2.2.*
     - cligj
     - munch
     - click-plugins
