@@ -5,12 +5,11 @@ package:
   version: {{ version }}
 
 source:
-  fn: fiona-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
   sha256: c406f3f60061da1978fa8e4bcc152b125e23a47dcc64f0948dda429f3792e79b
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: True
   entry_points:
     - fio=fiona.fio.main:main_group
@@ -21,12 +20,12 @@ requirements:
     - cython
     - setuptools
     - numpy x.x
-    - libgdal 2.2.*
+    - libgdal 2.1.*
   run:
     - python
     - setuptools
     - numpy x.x
-    - libgdal 2.2.*
+    - libgdal 2.1.*
     - cligj
     - munch
     - click-plugins
