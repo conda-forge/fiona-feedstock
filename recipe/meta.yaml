@@ -19,13 +19,17 @@ requirements:
     - python
     - cython
     - setuptools
-    - numpy x.x
-    - libgdal 2.1.*
+    - numpy 1.7.*  # [py27]
+    - numpy 1.9.*  # [py35]
+    - numpy 1.11.*  # [py36]
+    - libgdal 2.1.4
   run:
     - python
     - setuptools
-    - numpy x.x
-    - libgdal 2.1.*
+    - numpy >=1.7  # [py27]
+    - numpy >=1.9  # [py35]
+    - numpy >=1.11  # [py36]
+    - libgdal 2.1.4
     - cligj
     - munch
     - click-plugins
