@@ -1,4 +1,4 @@
-{% set version = "1.7.8" %}
+{% set version = "1.7.9" %}
 
 package:
   name: fiona
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: c406f3f60061da1978fa8e4bcc152b125e23a47dcc64f0948dda429f3792e79b
+  sha256: 91bb71b744a7444c3d96472158b74af1569ec2bc934737397658b968dd7dadba
 
 build:
-  number: 1
+  number: 0
   preserve_egg_dir: True
   entry_points:
     - fio=fiona.fio.main:main_group
@@ -19,16 +19,16 @@ requirements:
     - python
     - cython
     - setuptools
-    - numpy 1.7.*  # [py27]
-    - numpy 1.9.*  # [py35]
-    - numpy 1.11.*  # [py36]
+    - numpy 1.8.*  # [not (win and (py35 or py36))]
+    - numpy 1.9.*  # [win and py35]
+    - numpy 1.11.*  # [win and py36]
     - libgdal 2.1.4
   run:
     - python
     - setuptools
-    - numpy >=1.7  # [py27]
-    - numpy >=1.9  # [py35]
-    - numpy >=1.11  # [py36]
+    - numpy >=1.8  # [not (win and (py35 or py36))]
+    - numpy >=1.9  # [win and py35]
+    - numpy >=1.11  # [win and py36]
     - libgdal 2.1.4
     - cligj
     - munch
