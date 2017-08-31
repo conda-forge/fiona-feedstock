@@ -44,7 +44,6 @@ test:
     - fiona
     - fiona.fio
   requires:
-    - nose
     - pytest
   files:
     - test_data
