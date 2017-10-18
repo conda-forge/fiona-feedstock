@@ -9,7 +9,7 @@ source:
   sha256: 91bb71b744a7444c3d96472158b74af1569ec2bc934737397658b968dd7dadba
 
 build:
-  number: 1
+  number: 2
   preserve_egg_dir: True
   entry_points:
     - fio=fiona.fio.main:main_group
@@ -22,14 +22,14 @@ requirements:
     - numpy 1.8.*  # [not (win and (py35 or py36))]
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
-    - gdal 2.1.*
+    - gdal 2.2.*
   run:
     - python
     - setuptools
     - numpy >=1.8  # [not (win and (py35 or py36))]
     - numpy >=1.9  # [win and py35]
     - numpy >=1.11  # [win and py36]
-    - gdal 2.1.*
+    - gdal 2.2.*
     - cligj
     - munch
     - click-plugins
