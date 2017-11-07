@@ -9,7 +9,7 @@ source:
   sha256: 564d2f3485547a6b45e3e322249f02c1cc5a651890a27b3b5bab596a64ae0b67
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: True
   entry_points:
     - fio=fiona.fio.main:main_group
@@ -51,8 +51,8 @@ test:
     - fio --help
     - fio ls test_data/test.shp
     - fio info test_data/test.shp
-    - conda inspect linkages -p $PREFIX fiona  # [not win]
-    - conda inspect objects -p $PREFIX fiona  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://github.com/Toblerity/Fiona
