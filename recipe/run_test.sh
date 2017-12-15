@@ -5,7 +5,7 @@ cp test_data/coutwildrnp.json tests/data
 cp -r tests /tmp/
 
 pushd /tmp
-py.test -s -rxs -v -k "not test_fio_ls_multi_layer" tests
+py.test -s -rxs -v -k "not (test_fio_ls_multi_layer or test_directory_trailing_slash or test_directory or test_fio_ls_single_layer)" tests
 popd
 
 
