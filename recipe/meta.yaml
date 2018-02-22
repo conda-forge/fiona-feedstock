@@ -5,11 +5,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: 5e9c68ea71e9d79fcfb68c9a101c0b133301e233c9bcca7b7c65f33cc7636ef5
+  url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
+  sha256: 3f5dce57f1af489489537a2a679240eaab51008ce2afc45ea5e92ac797c7bb53
+  patches:
+    - fix_null_gdal_22.patch
 
 build:
-  number: 1
+  number: 2
   preserve_egg_dir: True
   entry_points:
     - fio=fiona.fio.main:main_group
@@ -22,14 +24,14 @@ requirements:
     - numpy 1.8.*  # [not (win and (py35 or py36))]
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
-    - gdal 2.1.*
+    - gdal 2.2.*
   run:
     - python
     - setuptools
     - numpy >=1.8  # [not (win and (py35 or py36))]
     - numpy >=1.9  # [win and py35]
     - numpy >=1.11  # [win and py36]
-    - gdal 2.1.*
+    - gdal 2.2.*
     - cligj
     - munch
     - click-plugins
