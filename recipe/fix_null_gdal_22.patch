@@ -56,14 +56,13 @@
          props = OrderedDict()
          for i in range(ogrext2.OGR_F_GetFieldCount(feature)):
              fdefn = ogrext2.OGR_F_GetFieldDefnRef(feature, i)
-@@ -177,7 +188,13 @@
+@@ -177,7 +188,12 @@
  
              # TODO: other types
              fieldtype = FIELD_TYPES_MAP[fieldtypename]
 +            is_null = False
-+            IF GDAL_VERSION_NUM >= 2020000:
-+                if ogrext2.OGR_F_IsFieldNull(feature, i):
-+                    is_null = True
++            if ogrext2.OGR_F_IsFieldNull(feature, i):
++                is_null = True
              if not ogrext2.OGR_F_IsFieldSet(feature, i):
 +                is_null =True
 +            if is_null:
@@ -72,12 +71,11 @@
                  props[key] = ogrext2.OGR_F_GetFieldAsInteger64(feature, i)
 --- b/fiona/ogrext2.pxd	2017-12-14 10:11:58.000000000 -0600
 +++ a/fiona/ogrext2.pxd	2018-02-21 15:58:56.063357331 -0600
-@@ -127,6 +127,8 @@
+@@ -127,6 +127,7 @@
      void    OGR_F_Destroy (void *feature)
      long    OGR_F_GetFID (void *feature)
      int     OGR_F_IsFieldSet (void *feature, int n)
-+    IF GDAL_VERSION_NUM >= 2020000:
-+        int     OGR_F_IsFieldNull (void *feature, int n)
++    int     OGR_F_IsFieldNull (void *feature, int n)
      int     OGR_F_GetFieldAsDateTime (void *feature, int n, int *y, int *m, int *d, int *h, int *m, int *s, int *z)
      double  OGR_F_GetFieldAsDouble (void *feature, int n)
      int     OGR_F_GetFieldAsInteger (void *feature, int n)
