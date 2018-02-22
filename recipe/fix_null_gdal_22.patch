@@ -6,8 +6,8 @@
  
 +def calc_gdal_version_num(maj=1, min=0, rev=0):
 +    return int(maj * 1000000 + min * 10000 + rev*100)
-+# libgdal env var is set by conda-build 3 as part of what's in our conda_build_config.yaml
-+GDAL_VERSION_NUM = calc_gdal_version_num(*[int(i) for i in os.getenv('libgdal', '').split(".")])
++# TODO: replace with conda-build 3 os.getenv('libgdal', '')
++GDAL_VERSION_NUM = calc_gdal_version_num(*[int(i) for i in gdalversion.split(".")])
 +
  if source_is_repo and "clean" not in sys.argv:
      # When building from a repo, Cython is required.
