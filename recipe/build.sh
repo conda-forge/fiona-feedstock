@@ -4,5 +4,8 @@ if [[ $(uname) == Darwin ]]; then
   export LDFLAGS="-headerpad_max_install_names $LDFLAGS"
 fi
 
-$PYTHON setup.py build_ext -I$PREFIX/include -L$PREFIX/lib -lgdal \
-                 install --single-version-externally-managed --record record.txt
+$PYTHON -m pip install --no-deps --ignore-installed . \
+                       --global-option=build_ext \
+                       --global-option="-I$PREFIX/include" \
+                       --global-option="-L$PREFIX/lib" \
+                       --global-option="-lgdal"
