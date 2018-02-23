@@ -11,26 +11,21 @@ source:
     - fix_null_gdal_22.patch
 
 build:
-  number: 2
-  preserve_egg_dir: True
+  number: 3
   entry_points:
     - fio=fiona.fio.main:main_group
 
 requirements:
   build:
     - python
+    - pip
     - cython
-    - setuptools
-    - numpy 1.8.*  # [not (win and (py35 or py36))]
-    - numpy 1.9.*  # [win and py35]
-    - numpy 1.11.*  # [win and py36]
+    - numpy 1.11.*
     - gdal 2.2.*
   run:
     - python
     - setuptools
-    - numpy >=1.8  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and py35]
-    - numpy >=1.11  # [win and py36]
+    - numpy >=1.11
     - gdal 2.2.*
     - cligj
     - munch
