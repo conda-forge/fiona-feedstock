@@ -1,4 +1,4 @@
-{% set version = "1.7.11" %}
+{% set version = "1.8a1" %}
 
 package:
   name: fiona
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
-  sha256: 3f5dce57f1af489489537a2a679240eaab51008ce2afc45ea5e92ac797c7bb53
+  sha256: 1a229bb511b0b228357556251a2c66c9a96e4321b195e2c67b996b8f93c78283
   patches:
     - fix_null_gdal_22.patch
 
 build:
-  number: 3
+  number: 0
   entry_points:
     - fio=fiona.fio.main:main_group
 
