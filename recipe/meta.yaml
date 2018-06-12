@@ -1,4 +1,4 @@
-{% set version = "1.7.11" %}
+{% set version = "1.7.12" %}
 
 package:
   name: fiona
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://github.com/Toblerity/Fiona/archive/{{ version }}.tar.gz
-  sha256: 3f5dce57f1af489489537a2a679240eaab51008ce2afc45ea5e92ac797c7bb53
+  sha256: bc49a4d2434ac860de8feeff13bcc4608da4124c102aa0fff8ec3c6883153acf
   patches:
     - fix_null_gdal_22.patch
 
 build:
-  number: 3
+  number: 0
   entry_points:
     - fio=fiona.fio.main:main_group
 
@@ -30,7 +30,7 @@ requirements:
     - cligj
     - munch
     - click-plugins
-    - six
+    - six >=1.7
     - enum34  # [py27]
     - shapely
 
