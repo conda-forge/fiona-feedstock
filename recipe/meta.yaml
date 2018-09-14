@@ -1,4 +1,4 @@
-{% set version = "1.7.10" %}
+{% set version = "1.8a2" %}
 
 package:
   name: fiona
@@ -6,34 +6,32 @@ package:
 
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: 564d2f3485547a6b45e3e322249f02c1cc5a651890a27b3b5bab596a64ae0b67
+  sha256: 57c20d6b158d038f0173cb666733643f5f5a9ef2a1e19256afa7b4fe3678ef77
 
 build:
-  number: 1
-  preserve_egg_dir: True
+  number: 0
   entry_points:
     - fio=fiona.fio.main:main_group
 
 requirements:
   build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - python
+    - pip
     - cython
-    - setuptools
-    - numpy 1.8.*  # [not (win and (py35 or py36))]
-    - numpy 1.9.*  # [win and py35]
-    - numpy 1.11.*  # [win and py36]
-    - gdal 2.1.*
+    - numpy
+    - gdal
   run:
     - python
     - setuptools
-    - numpy >=1.8  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and py35]
-    - numpy >=1.11  # [win and py36]
-    - gdal 2.1.*
+    - {{ pin_compatible('numpy') }}
+    - gdal
     - cligj
     - munch
     - click-plugins
-    - six
+    - six >=1.7
     - enum34  # [py27]
     - shapely
 
@@ -45,14 +43,14 @@ test:
     - fiona.fio
   requires:
     - pytest
+    - boto3
+    - packaging
   files:
     - test_data
   commands:
     - fio --help
     - fio ls test_data/test.shp
     - fio info test_data/test.shp
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://github.com/Toblerity/Fiona

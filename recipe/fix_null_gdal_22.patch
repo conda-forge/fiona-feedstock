@@ -1,0 +1,81 @@
+--- b/setup.py	2017-12-14 10:11:58.000000000 -0600
++++ a/setup.py	2018-02-21 15:59:06.936491272 -0600
+@@ -177,6 +177,11 @@
+ # Define the extension modules.
+ ext_modules = []
+ 
++def calc_gdal_version_num(maj=1, min=0, rev=0):
++    return int(maj * 1000000 + min * 10000 + rev*100)
++# TODO: replace with conda-build 3 os.getenv('libgdal', '')
++GDAL_VERSION_NUM = calc_gdal_version_num(*[int(i) for i in gdalversion.split(".")])
++
+ if source_is_repo and "clean" not in sys.argv:
+     # When building from a repo, Cython is required.
+     log.info("MANIFEST.in found, presume a repo, cythonizing...")
+@@ -198,7 +203,8 @@
+         Extension('fiona._crs', ['fiona/_crs.pyx'], **ext_options),
+         Extension('fiona._drivers', ['fiona/_drivers.pyx'], **ext_options),
+         Extension('fiona._err', ['fiona/_err.pyx'], **ext_options),
+-        Extension('fiona.ogrext', ['fiona/ogrext.pyx'], **ext_options)])
++        Extension('fiona.ogrext', ['fiona/ogrext.pyx'], **ext_options)],
++        compile_time_env={"GDAL_VERSION_NUM": GDAL_VERSION_NUM},)
+ 
+ # If there's no manifest template, as in an sdist, we just specify .c files.
+ elif "clean" not in sys.argv:
+--- b/fiona/ogrext2.pyx	2017-12-14 10:11:58.000000000 -0600
++++ a/fiona/ogrext2.pyx	2018-02-21 15:58:46.960245193 -0600
+@@ -34,6 +34,10 @@
+ 
+ 
+ log = logging.getLogger("Fiona")
++class NullHandler(logging.Handler):
++    def emit(self, record):
++        pass
++log.addHandler(NullHandler())
+ 
+ # Mapping of OGR integer field types to Fiona field type names.
+ #
+@@ -130,6 +134,12 @@
+     """Return current internal version number of gdal"""
+     return int(ogrext2.GDALVersionInfo("VERSION_NUM"))
+ 
++# check compiled version against runtime version
++# only compare the major and minor version number
++GDAL_RUNTIME_VERSION = get_gdal_version_num()
++if GDAL_VERSION_NUM // 1000 != GDAL_RUNTIME_VERSION // 1000:
++    log.warning("Fiona was compiled against GDAL {} but run with GDAL {}".format(GDAL_VERSION_NUM, GDAL_RUNTIME_VERSION))
++
+ def get_gdal_release_name():
+     """Return release name of gdal"""
+     return ogrext2.GDALVersionInfo("RELEASE_NAME")
+@@ -157,6 +167,7 @@
+         cdef int tz = 0
+         cdef int retval
+         cdef const char *key_c = NULL
++        cdef bint is_null
+         props = OrderedDict()
+         for i in range(ogrext2.OGR_F_GetFieldCount(feature)):
+             fdefn = ogrext2.OGR_F_GetFieldDefnRef(feature, i)
+@@ -177,7 +188,12 @@
+ 
+             # TODO: other types
+             fieldtype = FIELD_TYPES_MAP[fieldtypename]
++            is_null = False
++            if ogrext2.OGR_F_IsFieldNull(feature, i):
++                is_null = True
+             if not ogrext2.OGR_F_IsFieldSet(feature, i):
++                is_null =True
++            if is_null:
+                 props[key] = None
+             elif fieldtype is int:
+                 props[key] = ogrext2.OGR_F_GetFieldAsInteger64(feature, i)
+--- b/fiona/ogrext2.pxd	2017-12-14 10:11:58.000000000 -0600
++++ a/fiona/ogrext2.pxd	2018-02-21 15:58:56.063357331 -0600
+@@ -127,6 +127,7 @@
+     void    OGR_F_Destroy (void *feature)
+     long    OGR_F_GetFID (void *feature)
+     int     OGR_F_IsFieldSet (void *feature, int n)
++    int     OGR_F_IsFieldNull (void *feature, int n)
+     int     OGR_F_GetFieldAsDateTime (void *feature, int n, int *y, int *m, int *d, int *h, int *m, int *s, int *z)
+     double  OGR_F_GetFieldAsDouble (void *feature, int n)
+     int     OGR_F_GetFieldAsInteger (void *feature, int n)
