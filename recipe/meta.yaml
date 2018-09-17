@@ -9,7 +9,7 @@ source:
   sha256: 57c20d6b158d038f0173cb666733643f5f5a9ef2a1e19256afa7b4fe3678ef77
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - fio=fiona.fio.main:main_group
 
@@ -34,6 +34,8 @@ requirements:
     - six >=1.7
     - enum34  # [py27]
     - shapely
+    - boto3
+    - packaging
 
 test:
   source_files:
@@ -43,8 +45,6 @@ test:
     - fiona.fio
   requires:
     - pytest
-    - boto3
-    - packaging
   files:
     - test_data
   commands:
