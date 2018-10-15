@@ -1,4 +1,4 @@
-{% set version = "1.8a3" %}
+{% set version = "1.8b1" %}
 
 package:
   name: fiona
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: 383b92439b67d80d599831180a2155eb80b01d0c67ac0f70f70406ca25fb0212
+  sha256: 856069ee6ad75e6fb6cffd5013c25182e50ab3e1e6b5da8aede7476577eb752c
 
 build:
   number: 0
@@ -26,16 +26,17 @@ requirements:
   run:
     - python
     - setuptools
-    - {{ pin_compatible('numpy') }}
     - gdal
-    - cligj >=0.5
-    - munch
+    - {{ pin_compatible('numpy') }}
+    - attrs >=17
     - click >=4.0,<8
-    - click-plugins
+    - cligj >=0.5
+    - click-plugins >=1.0
     - six >=1.7
+    - munch
     - enum34  # [py27]
     - shapely
-    - boto3
+    - boto3 >=1.2.4
     - packaging
 
 test:
