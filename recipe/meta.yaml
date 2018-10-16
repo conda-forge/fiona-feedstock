@@ -28,12 +28,15 @@ requirements:
     - setuptools
     - {{ pin_compatible('numpy') }}
     - gdal
-    - cligj
-    - munch
-    - click-plugins
+    - click>=4.0,<8
+    - cligj >=0.5
+    - click-plugins >=1.0
     - six >=1.7
+    - munch
     - enum34  # [py27]
     - shapely
+
+
 
 test:
   source_files:
@@ -42,7 +45,9 @@ test:
     - fiona
     - fiona.fio
   requires:
-    - pytest
+    - pytest >=3
+    - boto3 >=1.2.4
+    - packaging
   files:
     - test_data
   commands:
