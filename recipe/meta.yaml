@@ -9,9 +9,9 @@ source:
   sha256: a156129f0904cb7eb24aa0745b6075da54f2c31db168ed3bcac8a4bd716d77b2
 
 build:
-  number: 3
+  number: 4
   entry_points:
-    - fio=fiona.fio.main:main_group
+    - fio = fiona.fio.main:main_group
 
 requirements:
   build:
@@ -28,12 +28,15 @@ requirements:
     - setuptools
     - {{ pin_compatible('numpy') }}
     - gdal
-    - cligj
-    - munch
-    - click-plugins
+    - click>=4.0,<8
+    - cligj >=0.5
+    - click-plugins >=1.0
     - six >=1.7
+    - munch
     - enum34  # [py27]
     - shapely
+
+
 
 test:
   source_files:
@@ -42,7 +45,9 @@ test:
     - fiona
     - fiona.fio
   requires:
-    - pytest
+    - pytest >=3
+    - boto3 >=1.2.4
+    - packaging
   files:
     - test_data
   commands:
@@ -52,9 +57,9 @@ test:
 
 about:
   home: http://github.com/Toblerity/Fiona
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: LICENSE.txt
-  summary: 'Fiona reads and writes spatial data files.'
+  summary: 'Fiona reads and writes spatial data files'
 
 extra:
   recipe-maintainers:
