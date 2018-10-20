@@ -9,7 +9,7 @@ source:
   sha256: 856069ee6ad75e6fb6cffd5013c25182e50ab3e1e6b5da8aede7476577eb752c
 
 build:
-  number: 1
+  number: 2
   entry_points:
     - fio = fiona.fio.main:main_group
 
@@ -22,11 +22,11 @@ requirements:
     - pip
     - cython >=0.28.3
     - numpy
-    - gdal
+    - gdal 2.3.*
   run:
     - python
     - setuptools
-    - gdal
+    - gdal >=2.3,<2.4
     - {{ pin_compatible('numpy') }}
     - attrs >=17
     - click >=4.0,<8
