@@ -7,3 +7,6 @@ appveyor:
 provider:
   osx: circle
 max_py_ver: '37'
+channels:
+  targets:
+    - [conda-forge, dev]
