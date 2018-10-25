@@ -10,6 +10,7 @@ source:
 
 build:
   number: 0
+  skip: True  # [win and py2k]
   entry_points:
     - fio = fiona.fio.main:main_group
 
