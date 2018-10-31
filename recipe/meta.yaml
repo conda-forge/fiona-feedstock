@@ -20,23 +20,22 @@ requirements:
   host:
     - python
     - pip
-    - cython
+    - cython >=0.28.3
     - numpy
     - gdal
   run:
     - python
     - setuptools
-    - {{ pin_compatible('numpy') }}
     - gdal
-    - click>=4.0,<8
+    - {{ pin_compatible('numpy') }}
+    - attrs >=17
+    - click >=4.0,<8
     - cligj >=0.5
     - click-plugins >=1.0
     - six >=1.7
     - munch
     - enum34  # [py27]
     - shapely
-
-
 
 test:
   source_files:
