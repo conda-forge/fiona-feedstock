@@ -1,4 +1,4 @@
-{% set version = "1.7.13" %}
+{% set version = "1.8.0" %}
 
 package:
   name: fiona
@@ -6,10 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: a156129f0904cb7eb24aa0745b6075da54f2c31db168ed3bcac8a4bd716d77b2
+  sha256: 20141a9ece06daa7bb4333fba640c2fe39a49f8aca5492d1da8595d41e91844a
 
 build:
-  number: 4
+  number: 0
+  skip: True  # [win and py27]
   entry_points:
     - fio = fiona.fio.main:main_group
 
@@ -20,23 +21,22 @@ requirements:
   host:
     - python
     - pip
-    - cython
+    - cython >=0.28.3
     - numpy
     - gdal
   run:
     - python
     - setuptools
-    - {{ pin_compatible('numpy') }}
     - gdal
-    - click>=4.0,<8
+    - {{ pin_compatible('numpy') }}
+    - attrs >=17
+    - click >=4.0,<8
     - cligj >=0.5
     - click-plugins >=1.0
     - six >=1.7
     - munch
     - enum34  # [py27]
     - shapely
-
-
 
 test:
   source_files:
