@@ -47,6 +47,7 @@ test:
     - pytest >=3
     - boto3 >=1.2.4
     - packaging
+    - pytest-catchlog
   files:
     - test_data
   commands:
