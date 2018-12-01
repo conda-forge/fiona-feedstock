@@ -1,4 +1,4 @@
-{% set version = "1.8.2" %}
+{% set version = "1.8.3" %}
 
 package:
   name: fiona
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: 4c6419b7ac29136708029f6a44b4ccd458735a4d241016c7b1bab41685c08d8f
+  sha256: 3e831100a23c3b6cd32b98baf0c9e2119d909b44a5cf4533d3625f61dcf2d2b1
 
 build:
   number: 1000
