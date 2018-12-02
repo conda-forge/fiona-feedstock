@@ -6,8 +6,7 @@ cp -r tests /tmp/
 
 pushd /tmp
 
-pytest -s -rxs -v -k "not (test_fio_ls_single_layer or test_directory or test_directory_trailing_slash or test_options or test_transaction or test_encoding_option_warning)"  tests
-
+$PYTHON -m pytest -s -rxs -v -k "not (test_fio_ls_single_layer or test_directory or test_directory_trailing_slash or test_options or test_transaction or test_encoding_option_warning)"  -m "not wheel" tests
 popd
 
 
