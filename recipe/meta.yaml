@@ -49,6 +49,7 @@ test:
     - boto3 >=1.2.4
     - packaging
     - pytest-catchlog
+    - mock  # [py2k]
   files:
     - test_data
   commands:
