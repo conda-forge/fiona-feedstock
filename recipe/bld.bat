@@ -1,3 +1,6 @@
+:: There is no `gdal-config` on Windows so we need to hardcode gdal's version.
+set GDAL_VERSION=2.4.2
+
 "%PYTHON%" -m pip install --no-deps --ignore-installed . ^
                           --global-option=build_ext ^
                           --global-option="-I%LIBRARY_INC%" ^
