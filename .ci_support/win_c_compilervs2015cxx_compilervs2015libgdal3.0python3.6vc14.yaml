@@ -6,12 +6,12 @@ channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2015
-gdal:
+libgdal:
 - '3.0'
 numpy:
 - '1.14'
 pin_run_as_build:
-  gdal:
+  libgdal:
     max_pin: x.x
   python:
     min_pin: x.x

@@ -12,7 +12,7 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '4'
-gdal:
+libgdal:
 - '3.0'
 macos_machine:
 - x86_64-apple-darwin13.4.0
@@ -21,10 +21,10 @@ macos_min_version:
 numpy:
 - '1.14'
 pin_run_as_build:
-  gdal:
+  libgdal:
     max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- '2.7'
+- '3.7'
