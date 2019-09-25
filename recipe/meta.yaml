@@ -23,7 +23,7 @@ requirements:
     - pip
     - cython >=0.28.3
     - numpy
-    - gdal
+    - libgdal
   run:
     - python
     - setuptools
