@@ -15,14 +15,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Appveyor</td>
-    <td>
-      <a href="https://ci.appveyor.com/project/conda-forge/fiona-feedstock/branch/master">
-        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/fiona-feedstock/master.svg?label=Windows">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
@@ -36,45 +29,87 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_python2.7</td>
+              <td>linux_libgdal2.4python2.7</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=linux&configuration=linux_python2.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=linux&configuration=linux_libgdal2.4python2.7" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_python3.6</td>
+              <td>linux_libgdal2.4python3.6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=linux&configuration=linux_python3.6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=linux&configuration=linux_libgdal2.4python3.6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_python3.7</td>
+              <td>linux_libgdal2.4python3.7</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=linux&configuration=linux_python3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=linux&configuration=linux_libgdal2.4python3.7" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_python2.7</td>
+              <td>linux_libgdal3.0python2.7</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=osx&configuration=osx_python2.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=linux&configuration=linux_libgdal3.0python2.7" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_python3.6</td>
+              <td>linux_libgdal3.0python3.6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=osx&configuration=osx_python3.6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=linux&configuration=linux_libgdal3.0python3.6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_python3.7</td>
+              <td>linux_libgdal3.0python3.7</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=osx&configuration=osx_python3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=linux&configuration=linux_libgdal3.0python3.7" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_libgdal2.4python2.7</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=osx&configuration=osx_libgdal2.4python2.7" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_libgdal2.4python3.6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=osx&configuration=osx_libgdal2.4python3.6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_libgdal2.4python3.7</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=osx&configuration=osx_libgdal2.4python3.7" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_libgdal3.0python2.7</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=osx&configuration=osx_libgdal3.0python2.7" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_libgdal3.0python3.6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=osx&configuration=osx_libgdal3.0python3.6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_libgdal3.0python3.7</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2914&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fiona-feedstock?branchName=master&jobName=osx&configuration=osx_libgdal3.0python3.7" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -97,7 +132,12 @@ Current build status
       </details>
     </td>
   </tr>
-![ppc64le disabled](https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg)
+  <tr>
+    <td>Linux_ppc64le</td>
+    <td>
+      <img src="https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg" alt="ppc64le disabled">
+    </td>
+  </tr>
 </table>
 
 Current release info
