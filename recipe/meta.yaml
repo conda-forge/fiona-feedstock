@@ -7,8 +7,6 @@ package:
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
   sha256: 5ec34898c8b983a723fb4e949dd3e0ed7e691c303e51f6bfd61e52ac9ac813ae
-  patches:
-    - argparse_pyversion.patch
 
 build:
   number: 0
