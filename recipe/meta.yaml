@@ -37,7 +37,6 @@ requirements:
     - munch
     - shapely
     - enum34  # [py<34]
-    - argparse  # [py<34]
 
 test:
   source_files:
