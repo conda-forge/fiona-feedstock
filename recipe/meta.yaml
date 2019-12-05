@@ -7,6 +7,8 @@ package:
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
   sha256: c9266ddf6ae2a64fcea20014ddf27f800ac07584f2fdb09c2a02f3b3a52e371c
+  patches:
+    - argparse_pyversion.patch
 
 build:
   number: 0
@@ -35,8 +37,10 @@ requirements:
     - click-plugins >=1.0
     - six >=1.7
     - munch
-    - shapely
+    - argparse  # [py<27]
+    - ordereddict  # [py<27]
     - enum34  # [py<34]
+    - shapely  # only option calc we include by default
 
 test:
   source_files:
