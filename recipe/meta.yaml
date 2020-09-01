@@ -1,4 +1,4 @@
-{% set version = "1.8.13" %}
+{% set version = "1.8.14" %}
 
 package:
   name: fiona
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: 5ec34898c8b983a723fb4e949dd3e0ed7e691c303e51f6bfd61e52ac9ac813ae
+  sha256: 6eac038206c89d2cf5f99ea38b81cc228dc21eac5f47870a9a32d453b0007f4d
 
 build:
-  number: 2
-  skip: True  # [win and vc<14]
+  number: 0
+  skip: true  # [win and vc<14]
   entry_points:
     - fio = fiona.fio.main:main_group
 
@@ -63,7 +63,7 @@ about:
   home: http://github.com/Toblerity/Fiona
   license: BSD-3-Clause
   license_file: LICENSE.txt
-  summary: 'Fiona reads and writes spatial data files'
+  summary: Fiona reads and writes spatial data files
 
 extra:
   recipe-maintainers:
