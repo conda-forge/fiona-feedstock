@@ -52,6 +52,7 @@ test:
     - packaging
     - pytest-catchlog
     - mock  # [py2k]
+    - pytz
   files:
     - test_data
   commands:
