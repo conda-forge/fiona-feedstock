@@ -1,4 +1,4 @@
-{% set version = "1.8.15" %}
+{% set version = "1.8.16" %}
 
 package:
   name: fiona
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: 3b1c9b5c834fae2fe947cfaea176db890bc6750d1a6ba9f54d969c19ffcd191e
+  sha256: fd6dfb65959becc916e9f6928618bfd59c16cdbc413ece0fbac61489cd11255f
   patches:
     # https://github.com/Toblerity/Fiona/pull/945
     # Already merged upstream, drop in the next release
