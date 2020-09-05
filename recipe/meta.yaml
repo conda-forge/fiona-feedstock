@@ -7,6 +7,10 @@ package:
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
   sha256: 3b1c9b5c834fae2fe947cfaea176db890bc6750d1a6ba9f54d969c19ffcd191e
+  patches:
+    # https://github.com/Toblerity/Fiona/pull/945
+    # Already merged upstream, drop in the next release
+    - backport_945.patch
 
 build:
   number: 0
