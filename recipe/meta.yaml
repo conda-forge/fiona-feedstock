@@ -9,7 +9,7 @@ source:
   sha256: b9059e0b29c2e9e6b817e53f941e77e1aca7075f986005d38db307067b60458f
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   entry_points:
     - fio = fiona.fio.main:main_group
