@@ -1,0 +1,21 @@
+
+diff --git a/pyproject.toml b/pyproject.toml
+index d6b0d0b..468af4c 100644
+--- Fiona/pyproject.toml
++++ Fiona/pyproject.toml
+@@ -1,2 +1,2 @@
+ [build-system]
+-requires = ["setuptools", "wheel", "cython==0.29.21", "oldest-supported-numpy"]
++requires = ["setuptools", "wheel", "cython==0.29.24", "oldest-supported-numpy"]
+diff --git a/requirements-dev.txt b/requirements-dev.txt
+index 2c898f7..f978077 100644
+--- Fiona/requirements-dev.txt
++++ Fiona/requirements-dev.txt
+@@ -1,6 +1,6 @@
+ -r requirements.txt
+ coverage==4.5.4
+-cython==0.29.21
++cython==0.29.24
+ mock ; python_version < '3.3'
+ pytest==4.6.6
+ pytest-cov==2.8.1

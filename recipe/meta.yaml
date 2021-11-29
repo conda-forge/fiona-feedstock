@@ -7,9 +7,12 @@ package:
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
   sha256: a70502d2857b82f749c09cb0dea3726787747933a2a1599b5ab787d74e3c143b
+  patches:
+    # Patches to be removed for PyPy7.3.8
+    - patches/001-update-cython.patch
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win and vc<14]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
