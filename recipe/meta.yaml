@@ -27,11 +27,13 @@ requirements:
   host:
     - python
     - pip
+    - certifi
     - cython >=0.28.3
     - numpy
     - libgdal
   run:
     - python
+    - certifi
     - setuptools
     - gdal
     - {{ pin_compatible('numpy') }}
