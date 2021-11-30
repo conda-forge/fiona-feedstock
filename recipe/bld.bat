@@ -8,6 +8,6 @@ echo "set GDAL_VERSION=%GDAL_VERSION%"
 "%PYTHON%" setup.py build_ext ^
                     -I"%LIBRARY_INC%" ^
                     -lgdal_i ^
-                    -L"%LIBRARY_LIB%" install ^
-                    --single-version-externally-managed
+                    -L"%LIBRARY_LIB%"
+"%PYTHON%" -m pip install --no-deps --ignore-installed .
 if errorlevel 1 exit 1
