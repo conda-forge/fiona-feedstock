@@ -6,6 +6,7 @@ if errorlevel 1 exit 1
 echo "set GDAL_VERSION=%GDAL_VERSION%"
 
 "%PYTHON%" setup.py build_ext ^
+                    --inplace ^
                     -I"%LIBRARY_INC%" ^
                     -lgdal_i ^
                     -L"%LIBRARY_LIB%"
