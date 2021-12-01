@@ -5,11 +5,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: a70502d2857b82f749c09cb0dea3726787747933a2a1599b5ab787d74e3c143b
+  url: https://github.com/Toblerity/Fiona/archive/refs/tags/{{ version }}.zip
+  sha256: 9548fed57eb165db3acf23f5362a9ac65a74e15da2917f71e467e59b09b0f2ed
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win and vc<14]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
@@ -27,11 +27,13 @@ requirements:
   host:
     - python
     - pip
+    - certifi  # [py<=37]
     - cython >=0.28.3
     - numpy
     - libgdal
   run:
     - python
+    - certifi  # [py<=37]
     - setuptools
     - gdal
     - {{ pin_compatible('numpy') }}

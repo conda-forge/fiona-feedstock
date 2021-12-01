@@ -5,9 +5,5 @@ set GDAL_VERSION=%%F
 if errorlevel 1 exit 1
 echo "set GDAL_VERSION=%GDAL_VERSION%"
 
-"%PYTHON%" -m pip install --no-deps --ignore-installed . ^
-                          --global-option=build_ext ^
-                          --global-option="-I%LIBRARY_INC%" ^
-                          --global-option="-L%LIBRARY_LIB%" ^
-                          --global-option="-lgdal_i"
+%PYTHON% setup.py build_ext -I"%LIBRARY_INC%" -lgdal_i -L"%LIBRARY_LIB%" install --single-version-externally-managed --record record.txt
 if errorlevel 1 exit 1
