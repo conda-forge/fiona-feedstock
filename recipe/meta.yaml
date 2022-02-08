@@ -1,4 +1,4 @@
-{% set version = "1.8.20" %}
+{% set version = "1.8.21" %}
 
 package:
   name: fiona
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/Toblerity/Fiona/archive/refs/tags/{{ version }}.zip
-  sha256: 9548fed57eb165db3acf23f5362a9ac65a74e15da2917f71e467e59b09b0f2ed
+  sha256: 9e66bff9e69c3270fbd8228e5ad0182be893c57167e406da13fa928b924622c7
 
 build:
-  number: 4
+  number: 0
   skip: true  # [win and vc<14]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
