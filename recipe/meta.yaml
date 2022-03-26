@@ -9,7 +9,7 @@ source:
   sha256: 9e66bff9e69c3270fbd8228e5ad0182be893c57167e406da13fa928b924622c7
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
