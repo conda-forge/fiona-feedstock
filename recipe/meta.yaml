@@ -9,7 +9,7 @@ source:
   sha256: a4dfed7c98cbecefe66e1824ca44685b526cfe9f98a578b769a570a67146d1e8
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
@@ -43,9 +43,6 @@ requirements:
     - click-plugins >=1.0
     - six >=1.7
     - munch
-    - argparse  # [py<27]
-    - ordereddict  # [py<27]
-    - enum34  # [py<34]
     - shapely  # only option calc we include by default
 
 test:
@@ -58,8 +55,6 @@ test:
     - pytest >=3
     - boto3 >=1.2.4
     - packaging
-    - pytest-catchlog
-    - mock  # [py2k]
     - pytz
   files:
     - test_data
