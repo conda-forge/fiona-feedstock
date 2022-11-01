@@ -43,9 +43,6 @@ requirements:
     - click-plugins >=1.0
     - six >=1.7
     - munch
-    - argparse  # [py<27]
-    - ordereddict  # [py<27]
-    - enum34  # [py<34]
     - shapely  # only option calc we include by default
 
 test:
