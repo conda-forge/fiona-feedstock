@@ -1,4 +1,4 @@
-From 00ddd7bff3e6374994612850abb33d025799eca2 Mon Sep 17 00:00:00 2001
+From c0ed73b4ddf362679377d7bc572eaf0b100aa8c7 Mon Sep 17 00:00:00 2001
 From: Klaus Zimmermann <klaus.zimmermann@smhi.se>
 Date: Mon, 5 Dec 2022 13:30:37 +0100
 Subject: [PATCH] Port patch from Toblerity/Fiona#1122
@@ -6,17 +6,16 @@ Subject: [PATCH] Port patch from Toblerity/Fiona#1122
 ---
  fiona/drvsupport.py      | 27 +++++++++++++++++----------
  pytest.ini               |  3 ++-
- requirements-dev.txt     |  4 ++--
  tests/conftest.py        | 18 ++++++++++++++++++
- tests/test_datetime.py   | 12 +++++++++---
- tests/test_drvsupport.py | 15 +++++++++++++--
- 6 files changed, 61 insertions(+), 18 deletions(-)
+ tests/test_datetime.py   |  6 ++++++
+ tests/test_drvsupport.py | 13 +++++++++++++
+ 5 files changed, 56 insertions(+), 11 deletions(-)
 
 diff --git a/fiona/drvsupport.py b/fiona/drvsupport.py
-index 6d6fc05..8d3d59b 100644
+index fd44f76..1320248 100644
 --- a/fiona/drvsupport.py
 +++ b/fiona/drvsupport.py
-@@ -44,7 +44,7 @@ supported_drivers = dict([
+@@ -40,7 +40,7 @@ supported_drivers = dict([
      # ESRI FileGDB 	FileGDB 	Yes 	Yes 	No, needs FileGDB API library
      # multi-layer
      ("FileGDB", "raw"),
@@ -25,7 +24,7 @@ index 6d6fc05..8d3d59b 100644
      # ESRI Personal GeoDatabase 	PGeo 	No 	Yes 	No, needs ODBC library
      # ESRI ArcSDE 	SDE 	No 	Yes 	No, needs ESRI SDE
      # ESRIJSON 	ESRIJSON 	No 	Yes 	Yes 
-@@ -52,11 +52,11 @@ supported_drivers = dict([
+@@ -48,11 +48,11 @@ supported_drivers = dict([
      # ESRI Shapefile 	ESRI Shapefile 	Yes 	Yes 	Yes
      ("ESRI Shapefile", "raw"),
      # FMEObjects Gateway 	FMEObjects Gateway 	No 	Yes 	No, needs FME
@@ -39,7 +38,7 @@ index 6d6fc05..8d3d59b 100644
      # Géoconcept Export 	Geoconcept 	Yes 	Yes 	Yes
      # multi-layers
      #   ("Geoconcept", "raw"),
-@@ -160,12 +160,16 @@ driver_mode_mingdal = {
+@@ -157,12 +157,16 @@ driver_mode_mingdal = {
      'w': {'GPKG': (1, 11, 0),
            'PCIDSK': (2, 0, 0),
            'GeoJSONSeq': (2, 4, 0),
@@ -58,7 +57,7 @@ index 6d6fc05..8d3d59b 100644
  }
  
  
-@@ -303,8 +307,9 @@ _driver_field_type_unsupported = {
+@@ -253,8 +257,9 @@ _driver_field_type_unsupported = {
          'BNA': None,
          'DXF': None,
          'PCIDSK': (2, 1, 0),
@@ -70,7 +69,7 @@ index 6d6fc05..8d3d59b 100644
      },
      'datetime': {
          'ESRI Shapefile': None,
-@@ -321,8 +326,9 @@ _driver_field_type_unsupported = {
+@@ -271,8 +276,9 @@ _driver_field_type_unsupported = {
          'BNA': None,
          'DXF': None,
          'PCIDSK': (2, 1, 0),
@@ -82,7 +81,7 @@ index 6d6fc05..8d3d59b 100644
      }
  }
  
-@@ -381,7 +387,8 @@ def _driver_supports_timezones(driver, field_type):
+@@ -331,7 +337,8 @@ def _driver_supports_timezones(driver, field_type):
  # None: driver never supports timezones, (2, 0, 0): driver supports timezones with GDAL 2.0.0
  _drivers_not_supporting_milliseconds = {
      'GPSTrackMaker': None,
@@ -105,26 +104,12 @@ index b561de3..50a3313 100644
 +    gdal: marks tests that are only dependent on GDAL functionality (e.g. for drvsupport)
  
  testpaths = tests
-diff --git a/requirements-dev.txt b/requirements-dev.txt
-index 42c6b65..e336163 100644
---- a/requirements-dev.txt
-+++ b/requirements-dev.txt
-@@ -2,7 +2,7 @@
- boto3>=1.3.1
- coverage==5.2.1
- cython~=0.29
--pytest==6.2.5
--pytest-cov==2.12.1
-+pytest==7.1.2
-+pytest-cov==3.0.0
- pytz==2020.1
- wheel
 diff --git a/tests/conftest.py b/tests/conftest.py
-index 101edd7..92537ca 100644
+index 05219ff..3da4b89 100644
 --- a/tests/conftest.py
 +++ b/tests/conftest.py
-@@ -16,6 +16,24 @@ from fiona.meta import extensions
- from fiona.model import Feature, ObjectEncoder, to_dict
+@@ -32,6 +32,24 @@ driver_extensions = {'DXF': 'dxf',
+                      'FlatGeobuf': 'fgb'}
  
  
 +def pytest_collection_modifyitems(config, items):
@@ -149,21 +134,10 @@ index 101edd7..92537ca 100644
      headers = []
      # gdal version number
 diff --git a/tests/test_datetime.py b/tests/test_datetime.py
-index a1ffb9d..c175fc8 100644
+index 4de8053..d5e4639 100644
 --- a/tests/test_datetime.py
 +++ b/tests/test_datetime.py
-@@ -366,8 +366,8 @@ def test_get_tz_offset():
- 
- 
- def generate_testcases():
--    """Generate test cases for drivers that support datefields, convert datefields to string or do not support
--    datefiels"""
-+    """Generate test cases for drivers that support date fields, convert date fields to string or do not support
-+    date fields"""
-     _test_cases_datefield = []
-     _test_cases_datefield_to_str = []
-     _test_cases_datefield_not_supported = []
-@@ -399,6 +399,7 @@ def generate_testcases():
+@@ -269,6 +269,7 @@ test_cases_datefield, test_cases_datefield_to_str, test_cases_datefield_not_supp
  
  
  @pytest.mark.parametrize("driver, field_type", test_cases_datefield)
@@ -171,16 +145,7 @@ index a1ffb9d..c175fc8 100644
  def test_datefield(tmpdir, driver, field_type):
      """
      Test date, time, datetime field types.
-@@ -461,7 +462,7 @@ def test_datefield(tmpdir, driver, field_type):
-         c.writerecords(records)
- 
-     with fiona.open(path, "r") as c:
--        assert get_schema_field(driver, c.schema) == field_type
-+        assert get_schema_field(driver, c.schema) == field_type, f"Returned field type is {get_schema_field(driver, c.schema)}, expected {field_type}"
-         items = [get_field(driver, f) for f in c]
-         assert len(items) == len(values_in)
-         for val, val_exp in zip(items, values_exp):
-@@ -471,6 +472,7 @@ def test_datefield(tmpdir, driver, field_type):
+@@ -342,6 +343,7 @@ def test_datefield(tmpdir, driver, field_type):
  
  
  @pytest.mark.parametrize("driver, field_type", test_cases_datefield_to_str)
@@ -188,40 +153,40 @@ index a1ffb9d..c175fc8 100644
  def test_datefield_driver_converts_to_string(tmpdir, driver, field_type):
      """
      Test handling of date, time, datetime for drivers that convert these types to string.
-@@ -690,6 +692,7 @@ def test_datefield_driver_converts_to_string(tmpdir, driver, field_type):
- @pytest.mark.parametrize(
-     "driver,field_type", test_cases_datefield + test_cases_datefield_to_str
- )
+@@ -528,6 +530,7 @@ def test_datefield_driver_converts_to_string(tmpdir, driver, field_type):
+ 
+ @pytest.mark.filterwarnings('ignore:.*driver silently converts *:UserWarning')
+ @pytest.mark.parametrize("driver,field_type", test_cases_datefield + test_cases_datefield_to_str)
 +@pytest.mark.gdal
  def test_datefield_null(tmpdir, driver, field_type):
      """
      Test handling of null values for date, time, datetime types for write capable drivers
-@@ -726,6 +729,7 @@ def test_datefield_null(tmpdir, driver, field_type):
+@@ -560,6 +563,7 @@ def test_datefield_null(tmpdir, driver, field_type):
  
  
  @pytest.mark.parametrize("driver, field_type", test_cases_datefield_not_supported)
 +@pytest.mark.gdal
  def test_datetime_field_unsupported(tmpdir, driver, field_type):
-     """Test if DriverSupportError is raised for unsupported field_types"""
+     """ Test if DriverSupportError is raised for unsupported field_types"""
      schema = get_schema(driver, field_type)
-@@ -739,6 +743,7 @@ def test_datetime_field_unsupported(tmpdir, driver, field_type):
+@@ -575,6 +579,7 @@ def test_datetime_field_unsupported(tmpdir, driver, field_type):
  
  
  @pytest.mark.parametrize("driver, field_type", test_cases_datefield_not_supported)
 +@pytest.mark.gdal
- def test_datetime_field_type_marked_not_supported_is_not_supported(
-     tmpdir, driver, field_type, monkeypatch
- ):
-@@ -801,6 +806,7 @@ def generate_tostr_testcases():
+ def test_datetime_field_type_marked_not_supported_is_not_supported(tmpdir, driver, field_type, monkeypatch):
+     """ Test if a date/datetime/time field type marked as not not supported is really not supported
  
- @pytest.mark.filterwarnings("ignore:.*driver silently converts *:UserWarning")
+@@ -628,6 +633,7 @@ def generate_tostr_testcases():
+ 
+ @pytest.mark.filterwarnings('ignore:.*driver silently converts *:UserWarning')
  @pytest.mark.parametrize("driver,field_type", test_cases_datefield_to_str)
 +@pytest.mark.gdal
- def test_driver_marked_as_silently_converts_to_str_converts_silently_to_str(
-     tmpdir, driver, field_type, monkeypatch
- ):
+ def test_driver_marked_as_silently_converts_to_str_converts_silently_to_str(tmpdir, driver, field_type, monkeypatch):
+     """ Test if a driver and field_type is marked in fiona.drvsupport.driver_converts_to_str to convert to str really
+       silently converts to str
 diff --git a/tests/test_drvsupport.py b/tests/test_drvsupport.py
-index 0dd8663..7239244 100644
+index dad53b6..a1ec328 100644
 --- a/tests/test_drvsupport.py
 +++ b/tests/test_drvsupport.py
 @@ -16,6 +16,7 @@ log = logging.getLogger()
@@ -238,9 +203,9 @@ index 0dd8663..7239244 100644
  )
 +@pytest.mark.gdal
  def test_write_or_driver_error(tmpdir, driver, testdata_generator):
-     """Test if write mode works."""
-     if driver == "BNA" and GDALVersion.runtime() < GDALVersion(2, 0):
-@@ -65,6 +67,7 @@ def test_write_or_driver_error(tmpdir, driver, testdata_generator):
+     """
+     Test if write mode works.
+@@ -73,6 +75,7 @@ def test_write_or_driver_error(tmpdir, driver, testdata_generator):
  @pytest.mark.parametrize(
      "driver", [driver for driver in driver_mode_mingdal["w"].keys()]
  )
@@ -248,15 +213,15 @@ index 0dd8663..7239244 100644
  def test_write_does_not_work_when_gdal_smaller_mingdal(
      tmpdir, driver, testdata_generator, monkeypatch
  ):
-@@ -96,6 +99,7 @@ def test_write_does_not_work_when_gdal_smaller_mingdal(
+@@ -112,6 +115,7 @@ def test_write_does_not_work_when_gdal_smaller_mingdal(
  @pytest.mark.parametrize(
      "driver", [driver for driver, raw in supported_drivers.items() if "a" in raw]
  )
 +@pytest.mark.gdal
  def test_append_or_driver_error(tmpdir, testdata_generator, driver):
-     """Test if driver supports append mode."""
-     if driver == "DGN":
-@@ -158,6 +162,7 @@ def test_append_or_driver_error(tmpdir, testdata_generator, driver):
+     """Test if driver supports append mode.
+ 
+@@ -178,6 +182,7 @@ def test_append_or_driver_error(tmpdir, testdata_generator, driver):
          if driver in supported_drivers
      ],
  )
@@ -264,7 +229,7 @@ index 0dd8663..7239244 100644
  def test_append_does_not_work_when_gdal_smaller_mingdal(
      tmpdir, driver, testdata_generator, monkeypatch
  ):
-@@ -165,6 +170,10 @@ def test_append_does_not_work_when_gdal_smaller_mingdal(
+@@ -190,6 +195,10 @@ def test_append_does_not_work_when_gdal_smaller_mingdal(
      if driver == "BNA" and GDALVersion.runtime() < GDALVersion(2, 0):
          pytest.skip("BNA driver segfaults with gdal 1.11")
  
@@ -273,17 +238,17 @@ index 0dd8663..7239244 100644
 +
 +
      path = str(tmpdir.join(get_temp_filename(driver)))
-     schema, crs, records1, records2, _ = testdata_generator(
+     schema, crs, records1, records2, test_equal, create_kwargs = testdata_generator(
          driver, range(0, 5), range(5, 10)
-@@ -210,6 +219,7 @@ def test_append_does_not_work_when_gdal_smaller_mingdal(
+@@ -236,6 +245,7 @@ def test_append_does_not_work_when_gdal_smaller_mingdal(
  @pytest.mark.parametrize(
      "driver", [driver for driver, raw in supported_drivers.items() if raw == "r"]
  )
 +@pytest.mark.gdal
  def test_no_write_driver_cannot_write(tmpdir, driver, testdata_generator, monkeypatch):
-     """Test if read only driver cannot write."""
-     monkeypatch.setitem(fiona.drvsupport.supported_drivers, driver, "rw")
-@@ -238,14 +248,15 @@ def test_no_write_driver_cannot_write(tmpdir, driver, testdata_generator, monkey
+     """Test if read only driver cannot write
+ 
+@@ -271,6 +281,7 @@ def test_no_write_driver_cannot_write(tmpdir, driver, testdata_generator, monkey
          if "w" in raw and "a" not in raw
      ],
  )
@@ -291,16 +256,15 @@ index 0dd8663..7239244 100644
  def test_no_append_driver_cannot_append(
      tmpdir, driver, testdata_generator, monkeypatch
  ):
-     """Test if a driver that supports write and not append cannot also append."""
-     monkeypatch.setitem(fiona.drvsupport.supported_drivers, driver, "raw")
+@@ -285,6 +296,8 @@ def test_no_append_driver_cannot_append(
  
--    if driver == "FlatGeobuf" and GDALVersion.runtime() >= GDALVersion(3, 5):
--        pytest.skip("FlatGeobuf driver segfaults with gdal 3.5")
+     if driver == "BNA" and GDALVersion.runtime() < GDALVersion(2, 0):
+         pytest.skip("BNA driver segfaults with gdal 1.11")
 +    if driver == "FlatGeobuf" and get_gdal_version_num() == calc_gdal_version_num(3, 5, 0):
 +        pytest.skip("FlatGeobuf driver segfaults with gdal 3.5.0")
  
      path = str(tmpdir.join(get_temp_filename(driver)))
-     schema, crs, records1, records2, _ = testdata_generator(
+     schema, crs, records1, records2, test_equal, create_kwargs = testdata_generator(
 -- 
 2.35.1
 
