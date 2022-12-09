@@ -8,7 +8,12 @@ source:
   url: https://github.com/Toblerity/Fiona/archive/refs/tags/{{ version }}.zip
   sha256: a4dfed7c98cbecefe66e1824ca44685b526cfe9f98a578b769a570a67146d1e8
   patches:
+    # NB: Both patches will become obsolete with Fiona >= 1.9
+    # This first one was merged for 1.9 as #1222
     - 0001-Port-patch-from-Toblerity-Fiona-1122.patch
+    # This second one will be obsolete because the metadata
+    # handling has been overhauled and the extensions are
+    # determined directly from the drivers
     - 0002-add-OpenFileGDB-extension.patch
 
 build:
