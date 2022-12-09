@@ -9,6 +9,7 @@ source:
   sha256: a4dfed7c98cbecefe66e1824ca44685b526cfe9f98a578b769a570a67146d1e8
   patches:
     - 0001-Port-patch-from-Toblerity-Fiona-1122.patch
+    - 0002-add-OpenFileGDB-extension.patch
 
 build:
   number: 3
