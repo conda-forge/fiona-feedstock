@@ -326,4 +326,5 @@ Feedstock Maintainers
 * [@akrherz](https://github.com/akrherz/)
 * [@jorisvandenbossche](https://github.com/jorisvandenbossche/)
 * [@ocefpaf](https://github.com/ocefpaf/)
+* [@zklaus](https://github.com/zklaus/)
 
