@@ -17,7 +17,7 @@ source:
     - 0002-add-OpenFileGDB-extension.patch
 
 build:
-  number: 4
+  number: 5
   skip: true  # [win and vc<14]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
