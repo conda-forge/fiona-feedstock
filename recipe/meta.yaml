@@ -1,4 +1,4 @@
-{% set version = "1.8.22" %}
+{% set version = "1.9.0" %}
 
 package:
   name: fiona
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/Toblerity/Fiona/archive/refs/tags/{{ version }}.zip
-  sha256: a4dfed7c98cbecefe66e1824ca44685b526cfe9f98a578b769a570a67146d1e8
+  sha256: 963a809ba56349ddbca1084178f6b8866956a91d0546c4f0114f40215975cb4c
   patches:
     # NB: Both patches will become obsolete with Fiona >= 1.9
     # This first one was merged for 1.9 as #1222
@@ -17,7 +17,7 @@ source:
     - 0002-add-OpenFileGDB-extension.patch
 
 build:
-  number: 5
+  number: 0
   skip: true  # [win and vc<14]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
