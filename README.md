@@ -1,11 +1,11 @@
-About fiona
-===========
+About fiona-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/fiona-feedstock/blob/main/LICENSE.txt)
 
 Home: http://github.com/Toblerity/Fiona
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/fiona-feedstock/blob/main/LICENSE.txt)
 
 Summary: Fiona reads and writes spatial data files
 

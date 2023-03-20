@@ -1,4 +1,4 @@
-{% set version = "1.9.1" %}
+{% set version = "1.9.2" %}
 
 package:
   name: fiona
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/Toblerity/Fiona/archive/refs/tags/{{ version }}.zip
-  sha256: c2898f70fc2b9d6614ab0a98507e0964dbbdd8909bb4f0f26c586cd9b387ae17
+  sha256: 84f24ccc5f59e2013bdeb6f1cde88ea572dec406ba8c21df6177d7d92a6204b5
 
 build:
   number: 0
@@ -41,6 +41,7 @@ requirements:
     - click >=4.0
     - cligj >=0.5
     - click-plugins >=1.0
+    - importlib-metadata
     - six >=1.7
     - munch
     - shapely  # only option calc we include by default
