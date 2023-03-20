@@ -41,6 +41,7 @@ requirements:
     - click >=4.0
     - cligj >=0.5
     - click-plugins >=1.0
+    - importlib-metadata
     - six >=1.7
     - munch
     - shapely  # only option calc we include by default
