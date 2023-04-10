@@ -1,4 +1,4 @@
-{% set version = "1.9.2" %}
+{% set version = "1.9.3" %}
 
 package:
   name: fiona
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/Toblerity/Fiona/archive/refs/tags/{{ version }}.zip
-  sha256: 84f24ccc5f59e2013bdeb6f1cde88ea572dec406ba8c21df6177d7d92a6204b5
+  sha256: d3681a987b0aeb3944a1af93ee035058f92bc01726ec304da92fd38822902b49
 
 build:
   number: 0
