@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/Toblerity/Fiona/archive/refs/tags/{{ version }}.zip
-  sha256: d728f5d60b8a5ad36b9265dc40db8526747837bee070cdd5f41f811bda2d8a3e
+  sha256: 31aef8eb0402c7dcd822ffe576fccbb7bfbe29a31f3b6805b87770d4b6f266e7
 
 build:
   number: 1
