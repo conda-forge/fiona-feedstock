@@ -1,3 +1,4 @@
+{% set name = "fiona" %}
 {% set version = "1.9.5" %}
 
 package:
@@ -5,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/Toblerity/Fiona/archive/refs/tags/{{ version }}.zip
-  sha256: 31aef8eb0402c7dcd822ffe576fccbb7bfbe29a31f3b6805b87770d4b6f266e7
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/fiona-{{ version }}.tar.gz
+  sha256: 99e2604332caa7692855c2ae6ed91e1fffdf9b59449aa8032dd18e070e59a2f7
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win and vc<14]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
@@ -27,23 +28,23 @@ requirements:
   host:
     - python
     - pip
-    - certifi  # [py<=37]
-    - cython >=0.28.3
+    - certifi
+    - cython >=3.0.2,<3.1.dev0
     - numpy
+    - setuptools >=67.8
     - libgdal
   run:
     - python
-    - certifi  # [py<=37]
+    - certifi
     - setuptools
     - gdal
     - {{ pin_compatible('numpy') }}
-    - attrs >=17
-    - click >=4.0
+    - attrs >=19.2.0
+    - click >=8.0,<9.dev0
     - cligj >=0.5
     - click-plugins >=1.0
-    - importlib-metadata
-    - six >=1.7
-    - munch
+    - importlib-metadata  # [py<310]
+    - six
     - shapely  # only option calc we include by default
 
 test:
@@ -56,10 +57,12 @@ test:
     - pytest >=3
     - boto3 >=1.2.4
     - packaging
+    - pip
     - pytz
   files:
     - test_data
   commands:
+    - pip check
     - fio --help
     - fio ls test_data/test.shp
     - fio info test_data/test.shp
@@ -76,3 +79,4 @@ extra:
     - akrherz
     - ocefpaf
     - jorisvandenbossche
+    - xylar
