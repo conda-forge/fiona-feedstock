@@ -8,6 +8,8 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/fiona-{{ version }}.tar.gz
   sha256: 99e2604332caa7692855c2ae6ed91e1fffdf9b59449aa8032dd18e070e59a2f7
+  patches:
+    - 0001-remove-certifi-dependency.patch
 
 build:
   number: 2
@@ -34,7 +36,6 @@ requirements:
     - libgdal
   run:
     - python
-    - certifi
     - setuptools
     - gdal
     - {{ pin_compatible('numpy') }}
