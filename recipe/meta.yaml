@@ -28,7 +28,6 @@ requirements:
   host:
     - python
     - pip
-    - certifi
     - cython >=3.0.2,<3.1.dev0
     - numpy
     - setuptools >=67.8
