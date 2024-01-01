@@ -10,9 +10,10 @@ source:
   sha256: 99e2604332caa7692855c2ae6ed91e1fffdf9b59449aa8032dd18e070e59a2f7
   patches:
     - 0001-remove-certifi-dependency.patch
+    - 0001_listdir_order.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win and vc<14]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
