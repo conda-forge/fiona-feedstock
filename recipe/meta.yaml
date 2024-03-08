@@ -39,7 +39,6 @@ requirements:
   run:
     - certifi
     - python
-    - setuptools
     - gdal
     - {{ pin_compatible('numpy') }}
     - attrs >=19.2.0
