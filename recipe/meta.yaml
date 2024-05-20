@@ -13,7 +13,7 @@ source:
     - 0001_listdir_order.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
@@ -28,6 +28,7 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - python
@@ -40,7 +41,6 @@ requirements:
     - certifi
     - python
     - gdal
-    - {{ pin_compatible('numpy') }}
     - attrs >=19.2.0
     - click >=8.0,<9.dev0
     - cligj >=0.5
