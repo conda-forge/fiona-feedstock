@@ -13,8 +13,8 @@ source:
     - 0001_listdir_order.patch
 
 build:
-  number: 1
-  skip: true  # [win and vc<14]
+  number: 2
+  skip: true  # [(win and vc<14) or ppc64le]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [unix]
