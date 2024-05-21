@@ -13,7 +13,7 @@ source:
     - 0001_listdir_order.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [(win and vc<14) or ppc64le]
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
