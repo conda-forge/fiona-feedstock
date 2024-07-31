@@ -10,6 +10,7 @@ source:
   sha256: 10bf65b28aee0f6e73e707ef772f7fc237dfcb95d2d9e0b1128bd3a408084ab9
   patches:
     - 0001-remove-certifi-dependency.patch
+    - 0002-remove-test-perf.patch
 
 build:
   number: 0
