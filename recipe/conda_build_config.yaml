@@ -1,2 +1,2 @@
 channel_targets:
-  - conda-forge fiona_dev
+  - conda-forge fiona_rc
