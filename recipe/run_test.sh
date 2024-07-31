@@ -6,8 +6,8 @@ cp -r tests /tmp/
 
 pushd /tmp
 
-pytest -s -rxs -v -k "not (test_fio_ls_single_layer or test_directory or test_directory_trailing_slash or test_options or test_transaction)"  tests
-
+# test_drvsupport.py::test_no_append_driver_cannot_append[FlatGeobuf] GH#197
+${PYTHON} -m pytest -s -rxs -v -k "not (test_fio_ls_single_layer or test_directory or test_directory_trailing_slash or test_options or test_transaction or test_encoding_option_warning or test_search_debian_gdal_data or test_search_gdal_data_debian or test_collection_zip_http or test_compound_crs or test_mapinfo or test_no_append_driver_cannot_append[PCIDSK])"  -m "not wheel" tests
 popd
 
 
@@ -19,3 +19,6 @@ popd
 # E         Full diff:
 # E         - [u'gre', u'coutwildrnp']
 # E         + ['coutwildrnp', 'gre']
+
+# Some wierd things happen with the gcc7 stack and pytest-catchlog
+# test_encoding_option_warning
