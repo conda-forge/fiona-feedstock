@@ -45,7 +45,6 @@ requirements:
     - cligj >=0.5
     - click-plugins >=1.0
     - importlib-metadata  # [py<310]
-    - munch >=2.3.2
     # calc extras
     - pyparsing
     - shapely
