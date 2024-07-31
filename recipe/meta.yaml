@@ -56,6 +56,8 @@ test:
     - fiona.fio
   requires:
     - boto3 >=1.3.1
+    # seemingly missing from upstream
+    - fsspec
     - pip
     - pytest >=7
     - pytest-cov
