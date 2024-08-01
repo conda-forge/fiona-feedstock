@@ -1,0 +1,13 @@
+diff -ruN fiona-1.10b3/tests/test_perf.py fiona-1.10b3-patch/tests/test_perf.py
+--- fiona-1.10b3/tests/test_perf.py	2024-04-01 19:39:02.000000000 +0200
++++ fiona-1.10b3-patch/tests/test_perf.py	1970-01-01 01:00:00.000000000 +0100
+@@ -1,9 +0,0 @@
+-"""Performance test."""
+-
+-import fiona
+-
+-with fiona.open(
+-    "/app/ne_10m_admin_0_countries_lakes/ne_10m_admin_0_countries_lakes.shp"
+-) as src:
+-    with fiona.open("/tmp/test_perf.shp", "w", **src.profile) as dst:
+-        dst.writerecords(src)

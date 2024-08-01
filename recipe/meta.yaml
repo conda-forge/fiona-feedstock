@@ -1,41 +1,51 @@
-{% set version = "1.8rc1" %}
+{% set name = "fiona" %}
+{% set version = "1.10b3" %}
 
 package:
   name: fiona
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: 55dcaf72766ee56ba9c539c16eb338567eebb80d7d90c3586c2653c80a4886f0
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/fiona-{{ version }}.tar.gz
+  sha256: 10bf65b28aee0f6e73e707ef772f7fc237dfcb95d2d9e0b1128bd3a408084ab9
+  patches:
+    - 0001-remove-test-perf.patch
 
 build:
   number: 0
-  skip: True  # [win and py2k]
+  script_env:
+    - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [unix]
   entry_points:
     - fio = fiona.fio.main:main_group
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - python
     - pip
-    - cython >=0.28.3
+    - cython >=3.0.2,<3.1.dev0
     - numpy
-    - gdal 2.3.*
+    - setuptools >=67.8
+    - libgdal
   run:
     - python
-    - setuptools
-    - gdal >=2.3,<2.4
-    - {{ pin_compatible('numpy') }}
-    - attrs >=17
-    - click >=4.0,<8
+    - gdal
+    - attrs >=19.2.0
+    - certifi
+    - click >=8.0,<9.dev0
     - cligj >=0.5
     - click-plugins >=1.0
-    - six >=1.7
-    - munch
-    - enum34  # [py27]
+    - importlib-metadata  # [py<310]
+    # calc extras
+    - pyparsing
     - shapely
 
 test:
@@ -45,22 +55,32 @@ test:
     - fiona
     - fiona.fio
   requires:
-    - pytest
-    - boto3 >=1.2.4
-    - packaging
+    - aiohttp
+    - boto3 >=1.3.1
+    - fsspec
+    - pip
+    - pytest >=7
+    - pytest-cov >=4.0,<5.0
+    - pytz 2022.6
+
   files:
     - test_data
   commands:
+    - pip check
     - fio --help
     - fio ls test_data/test.shp
     - fio info test_data/test.shp
 
 about:
   home: http://github.com/Toblerity/Fiona
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: LICENSE.txt
-  summary: 'Fiona reads and writes spatial data files.'
+  summary: Fiona reads and writes spatial data files
 
 extra:
   recipe-maintainers:
+    - zklaus
+    - akrherz
     - ocefpaf
+    - jorisvandenbossche
+    - xylar
