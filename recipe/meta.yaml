@@ -36,6 +36,8 @@ requirements:
     - libgdal
   run:
     - python
+    # purposefully excluding certifi as dependency
+    # see: https://github.com/conda-forge/fiona-feedstock/pull/220#issuecomment-1830275315
     - gdal
     - attrs >=19.2.0
     - click >=8.0,<9.dev0
