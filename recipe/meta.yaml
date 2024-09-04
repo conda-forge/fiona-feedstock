@@ -10,7 +10,6 @@ source:
   sha256: 3529fd46d269ff3f70aeb9316a93ae95cf2f87d7e148a8ff0d68532bf81ff7ae
   patches:
     - 0001-remove-certifi-dependency.patch
-    - 0001_listdir_order.patch
 
 build:
   number: 0
@@ -33,7 +32,6 @@ requirements:
     - python
     - pip
     - cython >=3.0.2,<3.1.dev0
-    - numpy
     - setuptools >=67.8
     - libgdal
   run:
@@ -45,7 +43,6 @@ requirements:
     - cligj >=0.5
     - click-plugins >=1.0
     - importlib-metadata  # [py<310]
-    - six
     - shapely  # only option calc we include by default
 
 test:
