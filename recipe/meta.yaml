@@ -57,7 +57,6 @@ test:
   requires:
     - pytest >=3
     - boto3 >=1.2.4
-    # seemingly missing from upstream
     - fsspec
     - packaging
     - pip
