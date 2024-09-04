@@ -1,5 +1,5 @@
 {% set name = "fiona" %}
-{% set version = "1.9.6" %}
+{% set version = "1.10.0" %}
 
 package:
   name: fiona
@@ -7,13 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/fiona-{{ version }}.tar.gz
-  sha256: 791b3494f8b218c06ea56f892bd6ba893dfa23525347761d066fb7738acda3b1
+  sha256: 3529fd46d269ff3f70aeb9316a93ae95cf2f87d7e148a8ff0d68532bf81ff7ae
   patches:
     - 0001-remove-certifi-dependency.patch
-    - 0001_listdir_order.patch
 
 build:
-  number: 4
+  number: 0
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [unix]
@@ -33,20 +32,22 @@ requirements:
     - python
     - pip
     - cython >=3.0.2,<3.1.dev0
-    - numpy
     - setuptools >=67.8
     - libgdal
   run:
-    - certifi
     - python
+    # purposefully excluding certifi as dependency
+    # see: https://github.com/conda-forge/fiona-feedstock/pull/220#issuecomment-1830275315
     - gdal
     - attrs >=19.2.0
     - click >=8.0,<9.dev0
     - cligj >=0.5
     - click-plugins >=1.0
     - importlib-metadata  # [py<310]
-    - six
-    - shapely  # only option calc we include by default
+
+    # only include calc extra by default
+    - pyparsing
+    - shapely
 
 test:
   source_files:
@@ -55,8 +56,10 @@ test:
     - fiona
     - fiona.fio
   requires:
+    - aiohttp
     - pytest >=3
     - boto3 >=1.2.4
+    - fsspec
     - packaging
     - pip
     - pytz
