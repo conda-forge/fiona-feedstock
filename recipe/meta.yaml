@@ -43,7 +43,10 @@ requirements:
     - cligj >=0.5
     - click-plugins >=1.0
     - importlib-metadata  # [py<310]
-    - shapely  # only option calc we include by default
+
+    # only include calc extra by default
+    - pyparsing
+    - shapely
 
 test:
   source_files:
@@ -54,6 +57,8 @@ test:
   requires:
     - pytest >=3
     - boto3 >=1.2.4
+    # seemingly missing from upstream
+    - fsspec
     - packaging
     - pip
     - pytz
