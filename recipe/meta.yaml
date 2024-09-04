@@ -35,7 +35,6 @@ requirements:
     - setuptools >=67.8
     - libgdal
   run:
-    - certifi
     - python
     - gdal
     - attrs >=19.2.0
@@ -55,6 +54,7 @@ test:
     - fiona
     - fiona.fio
   requires:
+    - aiohttp
     - pytest >=3
     - boto3 >=1.2.4
     - fsspec
