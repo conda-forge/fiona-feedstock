@@ -13,7 +13,7 @@ c_stdlib_version:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge fiona_rc
+- conda-forge fiona_dev
 cxx_compiler:
 - clangxx
 cxx_compiler_version:

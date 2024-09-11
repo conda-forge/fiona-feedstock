@@ -212,14 +212,14 @@ Current release info
 Installing fiona
 ================
 
-Installing `fiona` from the `conda-forge/label/fiona_rc` channel can be achieved by adding `conda-forge/label/fiona_rc` to your channels with:
+Installing `fiona` from the `conda-forge/label/fiona_dev` channel can be achieved by adding `conda-forge/label/fiona_dev` to your channels with:
 
 ```
-conda config --add channels conda-forge/label/fiona_rc
+conda config --add channels conda-forge/label/fiona_dev
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge/label/fiona_rc` channel has been enabled, `fiona` can be installed with `conda`:
+Once the `conda-forge/label/fiona_dev` channel has been enabled, `fiona` can be installed with `conda`:
 
 ```
 conda install fiona
@@ -234,26 +234,26 @@ mamba install fiona
 It is possible to list all of the versions of `fiona` available on your platform with `conda`:
 
 ```
-conda search fiona --channel conda-forge/label/fiona_rc
+conda search fiona --channel conda-forge/label/fiona_dev
 ```
 
 or with `mamba`:
 
 ```
-mamba search fiona --channel conda-forge/label/fiona_rc
+mamba search fiona --channel conda-forge/label/fiona_dev
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search fiona --channel conda-forge/label/fiona_rc
+mamba repoquery search fiona --channel conda-forge/label/fiona_dev
 
 # List packages depending on `fiona`:
-mamba repoquery whoneeds fiona --channel conda-forge/label/fiona_rc
+mamba repoquery whoneeds fiona --channel conda-forge/label/fiona_dev
 
 # List dependencies of `fiona`:
-mamba repoquery depends fiona --channel conda-forge/label/fiona_rc
+mamba repoquery depends fiona --channel conda-forge/label/fiona_dev
 ```
 
 
