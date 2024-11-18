@@ -6,13 +6,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/fiona-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/fiona-{{ version }}.tar.gz
   sha256: b00ae357669460c6491caba29c2022ff0acfcbde86a95361ea8ff5cd14a86b68
   patches:
     - 0001-remove-certifi-dependency.patch
 
 build:
-  number: 1
+  number: 2
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [unix]
