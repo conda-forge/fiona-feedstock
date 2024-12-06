@@ -12,7 +12,7 @@ source:
     - 0001-remove-certifi-dependency.patch
 
 build:
-  number: 2
+  number: 3
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [unix]
@@ -32,7 +32,7 @@ requirements:
     - pip
     - cython >=3.0.2,<3.1.dev0
     - setuptools >=67.8
-    - libgdal
+    - libgdal-core
   run:
     - python
     # purposefully excluding certifi as dependency
