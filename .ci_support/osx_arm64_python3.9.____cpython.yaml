@@ -18,7 +18,7 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '18'
-libgdal:
+libgdal_core:
 - '3.10'
 macos_machine:
 - arm64-apple-darwin20.0.0
