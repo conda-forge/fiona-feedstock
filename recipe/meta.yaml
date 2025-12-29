@@ -11,6 +11,7 @@ source:
   patches:
     - 0001-remove-certifi-dependency.patch
     - 0002-remove-dup-where.patch
+    - 0003-pyparsing-one-of-dep.patch
 
 build:
   number: 6
