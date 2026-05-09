@@ -14,7 +14,7 @@ source:
     - 0003-pyparsing-one-of-dep.patch
 
 build:
-  number: 6
+  number: 7
   script_env:
     - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [unix]
