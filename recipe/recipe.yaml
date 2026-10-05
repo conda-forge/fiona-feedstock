@@ -23,7 +23,7 @@ source:
     - 0005-geojson-writer-no-longer-pads-with-spaces.patch
 
 build:
-  number: 7
+  number: 8
   python:
     entry_points:
       - fio = fiona.fio.main:main_group
